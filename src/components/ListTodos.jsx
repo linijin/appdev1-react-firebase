@@ -3,6 +3,7 @@ import { MdDelete } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import {db} from '../firebase.js' /* import firebase from 'firebase/compat/app';  */
 import {collection, addDoc, getDocs, updateDoc, doc, deleteDoc} from 'firebase/firestore'; 
+import { SignOut } from './SignOut.jsx';
 
 const ListTodos = ({user}) => {
     const [loading, setLoading] = useState(true)
@@ -61,7 +62,8 @@ const ListTodos = ({user}) => {
     return (
         <>
           <div>
-            <h3>Welcome, {user}</h3>
+            <h1>Todo React App</h1>
+            <h3>Welcome, {user.email || user.displayName } <SignOut/> </h3>
             <input type="text" value={newTodo} placeholder='Add todo' onChange={(e) => setNewTodo(e.target.value)} />
             <button onClick={handleNewTodo}><FaPlus /> Add</button>
             <ul>
